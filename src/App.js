@@ -2,9 +2,7 @@ import React, {Component, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Person from "./Person/Person";
-import person from "./Person/Person";
 // import App from "react-scripts/template/src/App";
-
 class App extends Component {
     state = {
         persons: [
@@ -55,11 +53,15 @@ class App extends Component {
     }
     render() {
         const style = {
-            backgroundColor: 'white',
+            backgroundColor: 'red',
             font: 'inherit',
             border: '1px solid blue',
             padding: '8px',
             cursor: 'pointer',
+            ':hover':{
+                backgroundColor: 'lightgreen',
+                color: 'black'
+            }
         };
         let persons = null;
         if(this.state.showPersons){
@@ -76,33 +78,30 @@ class App extends Component {
                 
                 </div>
             );
+        style.backgroundColor = 'red';
+        style[':hover'] = {
+            backgroundColor: 'salmon',
+            color: 'black'
         }
-        style.backgroundColor = 'red'
-        let classes = ['red','bold'].join(' ');
+    }
+        let classes = [];
+        if(this.state.persons.length <=2){
+            classes.push('red');
+        }
+        if(this.state.persons.length <=1){
+            classes.push('bold');
+        }
         return (
-            <div className="App">
-                <h1>Hi Sana,  I'm a React App</h1>
-                <p className={classes}>This is really working!</p>
-                <button
-                style={style}
-                onclick={this.togglePersonHandler}>Toggle Persons</button>
+        <div className="App">
+        <h1>Hi Sana,  I'm a React App</h1>
+        <p className={classes.join(' ')}>This is really working!</p>
+        <button alt={this.state.showPersons} 
+        onclick={this.togglePersonHandler}>Toggle Persons</button>
                 {persons}
             </div>
+        
         );
 
     }
 }
-
 export default App;
-
-    // {/*<Person*/}
-    //                 {/*    name={this.state.persons[0].name}*/}
-    //                 {/*    age={this.state.persons[0].age}/>*/}
-    //                 {/*<Person*/}
-    //                 {/*    name={this.state.persons[1].name}*/}
-    //                 {/*    age={this.state.persons[1].age}*/}
-    //                 {/*    click={this.nameChangedHandler.bind(this, 'Max!')}*/}
-    //                 {/*    changed = {this.nameChangedHandler}>My hobbies: Racing</Person>*/}
-    //                 {/*<Person*/}
-    //                 {/*    name={this.state.persons[2].name}*/}
-    //                 {/*    age={this.state.persons[2].age}/>*/}
