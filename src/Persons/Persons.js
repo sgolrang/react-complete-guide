@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Person from './Person/Person';
-
+import AuthContext from '../context/auth-context';
 class Persons extends Component {
   // static getDerivedStateFromProps(props, state) {
   //   console.log('[Persons.js] getDerivedStateFromProps');
@@ -55,5 +55,5 @@ class Persons extends Component {
     });
   }
 }
-
+   
 export default Persons;
